@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e·motion — 5-Minute Morning Reset</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F5F1E8;
+            --sage: #7A8B7A;
+            --terracotta: #C4907E;
+            --charcoal: #4A4A4A;
+            --cream-dark: #EDE9E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--sage);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--terracotta) 0%, transparent 70%);
+            opacity: 0.1;
+            filter: blur(60px);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--sage) 0%, transparent 70%);
+            opacity: 0.15;
+            filter: blur(50px);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-image {
+            margin-top: 3rem;
+            max-width: 100%;
+        }
+
+        .hero-image img {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 30px 80px rgba(74, 74, 74, 0.15);
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .btn-primary:hover {
+            background: var(--sage);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--charcoal);
+            border: 1px solid var(--charcoal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.5;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--charcoal), transparent);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .feature-card {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 100%);
+            border: 1px solid rgba(122, 139, 122, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--sage), var(--terracotta));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(74, 74, 74, 0.05);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.5rem;
+            color: var(--sage);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            line-height: 1.7;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 8rem 4rem;
+            background: var(--cream-dark);
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 3rem;
+            align-items: start;
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(74, 74, 74, 0.1);
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--terracotta);
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        .step-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-content p {
+            opacity: 0.7;
+            max-width: 500px;
+        }
+
+        /* Movement Cards Preview */
+        .cards-preview {
+            padding: 8rem 4rem;
+            text-align: center;
+        }
+
+        .cards-showcase {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .movement-card {
+            width: 200px;
+            height: 280px;
+            background: linear-gradient(145deg, #fff 0%, var(--cream) 100%);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 40px rgba(74, 74, 74, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .movement-card:nth-child(1) { transform: rotate(-8deg) translateY(20px); }
+        .movement-card:nth-child(2) { transform: rotate(-3deg); z-index: 1; }
+        .movement-card:nth-child(3) { transform: rotate(4deg) translateY(10px); }
+        .movement-card:nth-child(4) { transform: rotate(10deg) translateY(30px); }
+
+        .movement-card:hover {
+            transform: rotate(0deg) translateY(-10px) scale(1.05);
+            z-index: 10;
+            box-shadow: 0 20px 60px rgba(74, 74, 74, 0.12);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon.sage { background: rgba(122, 139, 122, 0.15); color: var(--sage); }
+        .card-icon.terracotta { background: rgba(196, 144, 126, 0.15); color: var(--terracotta); }
+
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        .card-duration {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 8rem 4rem;
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .testimonials .section-header h2 {
+            color: var(--cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            padding: 2.5rem;
+            border-left: 2px solid var(--terracotta);
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .testimonial-author {
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            opacity: 0.6;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 8rem 4rem;
+            text-align: center;
+        }
+
+        .price-card {
+            max-width: 500px;
+            margin: 4rem auto 0;
+            padding: 4rem;
+            background: #fff;
+            box-shadow: 0 20px 60px rgba(74, 74, 74, 0.08);
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 400;
+        }
+
+        .price-period {
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+
+        .price-description {
+            opacity: 0.6;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2.5rem;
+        }
+
+        .price-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(74, 74, 74, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .price-features li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--sage);
+            border-radius: 50%;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 6rem 4rem;
+            background: linear-gradient(135deg, var(--sage) 0%, #8a9b8a 100%);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            color: var(--cream);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--charcoal);
+            opacity: 0.5;
+        }
+
+        .newsletter-form .btn {
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .newsletter-form .btn:hover {
+            background: var(--terracotta);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem;
+            text-align: center;
+            border-top: 1px solid rgba(74, 74, 74, 0.1);
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 28px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            opacity: 0.4;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+            }
+
+            .features,
+            .how-it-works,
+            .cards-preview,
+            .testimonials,
+            .pricing {
+                padding: 5rem 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .step-number {
+                font-size: 2.5rem;
+            }
+
+            .cards-showcase {
+                gap: 1rem;
+            }
+
+            .movement-card {
+                width: 160px;
+                height: 220px;
+                padding: 1.5rem 1rem;
+            }
+
+            .movement-card:nth-child(1),
+            .movement-card:nth-child(2),
+            .movement-card:nth-child(3),
+            .movement-card:nth-child(4) {
+                transform: none;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .newsletter {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Animations on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo"><img src="images/logo.png" alt="e·motion"></a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#newsletter" class="btn btn-secondary" style="padding: 0.5rem 1.5rem;">Get Early Access</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="tagline">5-Minute Morning Reset</p>
+            <h1>Start each day with <em>intention</em></h1>
+            <p class="hero-description">A minimalist journal paired with digital movement cards. Ground yourself in 5 minutes, before the world rushes in.</p>
+            <div class="cta-group">
+                <a href="#newsletter" class="btn btn-primary">Join the Waitlist</a>
+                <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero.jpg" alt="e·motion journal and movement cards">
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header fade-in">
+            <h2>Designed for stillness</h2>
+            <p>Everything you need, nothing you don't. Built for the moments before your day begins.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 6.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Z"/>
+                    <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+                <h3>Morning Pages</h3>
+                <p>Three simple prompts to clear your mind and set your intention. No overwhelming blank pages—just gentle guidance.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    <path d="M8 7h8m-8 4h6"/>
+                </svg>
+                <h3>Digital Cards</h3>
+                <p>30+ movement cards delivered to your phone. Stretch, breathe, and move with beautiful guided sequences.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <h3>5 Minutes</h3>
+                <p>Intentionally brief. Long enough to shift your state, short enough to actually do every single day.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header fade-in">
+            <h2>Your morning ritual</h2>
+            <p>A gentle sequence to start your day grounded</p>
+        </div>
+        <div class="steps-container">
+            <div class="step fade-in">
+                <span class="step-number">01</span>
+                <div class="step-content">
+                    <h3>Wake & Draw</h3>
+                    <p>Before checking your phone, draw a movement card. Each card offers a 2-minute gentle sequence to wake up your body.</p>
+                </div>
+            </div>
+            <div class="step fade-in">
+                <span class="step-number">02</span>
+                <div class="step-content">
+                    <h3>Move & Breathe</h3>
+                    <p>Follow the illustrated movements on your card. No equipment needed. Just you, your breath, and a few square feet of space.</p>
+                </div>
+            </div>
+            <div class="step fade-in">
+                <span class="step-number">03</span>
+                <div class="step-content">
+                    <h3>Write & Release</h3>
+                    <p>Open your journal to today's prompts. Three questions. Three minutes. Let whatever's on your mind flow onto the page.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cards-preview">
+        <div class="section-header fade-in">
+            <h2>Movement cards</h2>
+            <p>Beautifully illustrated sequences for every mood and energy level</p>
+        </div>
+        <div class="cards-showcase fade-in">
+            <div class="movement-card">
+                <div class="card-icon sage">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                </div>
+                <span class="card-title">Morning Wake</span>
+                <span class="card-duration">2 min</span>
+            </div>
+            <div class="movement-card">
+                <div class="card-icon terracotta">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <span class="card-title">Gentle Flow</span>
+                <span class="card-duration">3 min</span>
+            </div>
+            <div class="movement-card">
+                <div class="card-icon sage">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                </div>
+                <span class="card-title">Energy Boost</span>
+                <span class="card-duration">2 min</span>
+            </div>
+            <div class="movement-card">
+                <div class="card-icon terracotta">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <span class="card-title">Heart Open</span>
+                <span class="card-duration">2 min</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="section-header fade-in">
+            <h2>Early voices</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial fade-in">
+                <p class="testimonial-text">"This replaced my doomscrolling. Five minutes of movement and writing, and I actually feel ready for the day."</p>
+                <p class="testimonial-author">— Maya, Designer</p>
+            </div>
+            <div class="testimonial fade-in">
+                <p class="testimonial-text">"The cards are gorgeous. I find myself actually looking forward to waking up now."</p>
+                <p class="testimonial-author">— James, Founder</p>
+            </div>
+            <div class="testimonial fade-in">
+                <p class="testimonial-text">"I've tried every meditation app. This is different—it's physical, it's tactile, and it actually sticks."</p>
+                <p class="testimonial-author">— Sofia, Writer</p>
+            </div>
+            <div class="testimonial fade-in">
+                <p class="testimonial-text">"The simplicity is the point. No streaks, no stats. Just presence."</p>
+                <p class="testimonial-author">— Alex, Engineer</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="section-header fade-in">
+            <h2>Simple, intentional</h2>
+            <p>One journal. Lifetime access to digital cards. Nothing recurring.</p>
+        </div>
+        <div class="price-card fade-in">
+            <div class="price">
+                <span class="price-amount">$54.99</span>
+                <span class="price-period">one time</span>
+            </div>
+            <p class="price-description">Free shipping worldwide</p>
+            <ul class="price-features">
+                <li>90-day guided journal with premium paper</li>
+                <li>30+ digital movement cards (lifetime access)</li>
+                <li>Seasonal card pack updates</li>
+                <li>Audio guidance for each movement</li>
+                <li>Private community access</li>
+            </ul>
+            <a href="#newsletter" class="btn btn-primary" style="width: 100%;">Join the Waitlist</a>
+        </div>
+    </section>
+
+    <section class="newsletter" id="newsletter">
+        <div class="section-header">
+            <h2>Be the first to know</h2>
+            <p>Join the waitlist for early access and a founding member discount.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for joining! We\'ll be in touch soon.');">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit" class="btn">Join Waitlist</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-logo"><img src="images/logo.png" alt="e·motion"></div>
+        <ul class="footer-links">
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <p class="copyright">&copy; 2025 e·motion. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
