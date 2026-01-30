@@ -943,10 +943,11 @@
             <h2>Feel grounded before 8am.</h2>
             <p>Join the waitlist for early access and 20% off at launch.</p>
         </div>
-        <form class="newsletter-form" id="waitlist-form">
+        <form class="newsletter-form" id="waitlist-form" action="https://tally.so/r/Bz7pqA" method="GET" target="tally-iframe">
             <input type="email" name="email" placeholder="Your email address" required>
             <button type="submit" class="btn">Join Waitlist</button>
         </form>
+        <iframe name="tally-iframe" style="display: none;"></iframe>
     </section>
 
     <footer>
@@ -995,29 +996,17 @@
         });
 
         // Waitlist form submission
-        document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const email = this.querySelector('input[name="email"]').value;
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
             const submitBtn = this.querySelector('button[type="submit"]');
 
             // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Joining...';
 
-            try {
-                // Submit to Tally
-                await fetch(`https://tally.so/r/Bz7pqA?email=${encodeURIComponent(email)}`, {
-                    method: 'GET',
-                    mode: 'no-cors'
-                });
-
-                // Redirect to thank you page
+            // Wait 1 second for form to submit to iframe, then redirect
+            setTimeout(function() {
                 window.location.href = 'thankyou.html';
-            } catch (error) {
-                // Even if there's an error, redirect (Tally may block CORS but still receive the submission)
-                window.location.href = 'thankyou.html';
-            }
+            }, 1000);
         });
     </script>
 </body>
