@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're on the list — e·motion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F5F1E8;
+            --sage: #7A8B7A;
+            --terracotta: #C4907E;
+            --charcoal: #4A4A4A;
+            --cream-dark: #EDE9E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            font-weight: 300;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        .logo {
+            padding: 2rem 4rem;
+            text-align: center;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            max-width: 450px;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            background: var(--charcoal);
+            color: var(--cream);
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--sage);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                padding: 1.5rem 2rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="e·motion"></a>
+    </div>
+
+    <div class="content">
+        <h1>You're on the list.</h1>
+        <p class="subhead">We'll email you when e·motion launches. Get ready to feel grounded before 8am.</p>
+        <a href="index.html" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

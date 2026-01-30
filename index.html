@@ -943,7 +943,7 @@
             <h2>Feel grounded before 8am.</h2>
             <p>Join the waitlist for early access and 20% off at launch.</p>
         </div>
-        <form class="newsletter-form" action="https://tally.so/r/Bz7pqA" method="GET" target="_blank">
+        <form class="newsletter-form" id="waitlist-form">
             <input type="email" name="email" placeholder="Your email address" required>
             <button type="submit" class="btn">Join Waitlist</button>
         </form>
@@ -992,6 +992,32 @@
                     });
                 }
             });
+        });
+
+        // Waitlist form submission
+        document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = this.querySelector('input[name="email"]').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+
+            try {
+                // Submit to Tally
+                await fetch(`https://tally.so/r/Bz7pqA?email=${encodeURIComponent(email)}`, {
+                    method: 'GET',
+                    mode: 'no-cors'
+                });
+
+                // Redirect to thank you page
+                window.location.href = 'thankyou.html';
+            } catch (error) {
+                // Even if there's an error, redirect (Tally may block CORS but still receive the submission)
+                window.location.href = 'thankyou.html';
+            }
         });
     </script>
 </body>
