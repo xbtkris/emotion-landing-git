@@ -578,37 +578,13 @@
             margin-right: auto;
         }
 
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .tally-embed {
             max-width: 500px;
             margin: 0 auto;
         }
 
-        .newsletter-form input {
-            flex: 1;
-            min-width: 250px;
-            padding: 1rem 1.5rem;
-            border: none;
-            background: rgba(255, 255, 255, 0.9);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-        }
-
-        .newsletter-form input::placeholder {
-            color: var(--charcoal);
-            opacity: 0.5;
-        }
-
-        .newsletter-form .btn {
-            background: var(--charcoal);
-            color: var(--cream);
-        }
-
-        .newsletter-form .btn:hover {
-            background: var(--terracotta);
+        .tally-embed iframe {
+            width: 100%;
         }
 
         /* Footer */
@@ -943,11 +919,9 @@
             <h2>Feel grounded before 8am.</h2>
             <p>Join the waitlist for early access and 20% off at launch.</p>
         </div>
-        <form class="newsletter-form" id="waitlist-form" action="https://tally.so/r/Bz7pqA" method="GET" target="tally-iframe">
-            <input type="email" name="email" placeholder="Your email address" required>
-            <button type="submit" class="btn">Join Waitlist</button>
-        </form>
-        <iframe name="tally-iframe" style="display: none;"></iframe>
+        <div class="tally-embed">
+            <iframe data-tally-src="https://tally.so/embed/Bz7pqA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="177" frameborder="0" marginheight="0" marginwidth="0" title="e·motion Waitlist"></iframe>
+        </div>
     </section>
 
     <footer>
@@ -995,19 +969,8 @@
             });
         });
 
-        // Waitlist form submission
-        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-            const submitBtn = this.querySelector('button[type="submit"]');
-
-            // Disable button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Joining...';
-
-            // Wait 1 second for form to submit to iframe, then redirect
-            setTimeout(function() {
-                window.location.href = 'thankyou.html';
-            }, 1000);
-        });
+        // Tally embed script
+        var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
     </script>
 </body>
 </html>
