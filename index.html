@@ -943,11 +943,11 @@
             <h2>Feel grounded before 8am.</h2>
             <p>Join the waitlist for early access and 20% off at launch.</p>
         </div>
-        <form class="newsletter-form" id="waitlist-form" action="https://tally.so/r/Bz7pqA" method="GET" target="tally-iframe">
+        <form class="newsletter-form" action="https://formspree.io/f/maqjarep" method="POST">
             <input type="email" name="email" placeholder="Your email address" required>
+            <input type="hidden" name="_next" value="https://tryemotion.com/thankyou.html">
             <button type="submit" class="btn">Join Waitlist</button>
         </form>
-        <iframe name="tally-iframe" style="display: none;"></iframe>
     </section>
 
     <footer>
@@ -993,20 +993,6 @@
                     });
                 }
             });
-        });
-
-        // Waitlist form submission
-        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-            const submitBtn = this.querySelector('button[type="submit"]');
-
-            // Disable button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Joining...';
-
-            // Wait 1 second for form to submit to iframe, then redirect
-            setTimeout(function() {
-                window.location.href = 'thankyou.html';
-            }, 1000);
         });
     </script>
 </body>
