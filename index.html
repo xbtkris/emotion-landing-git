@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e·motion — 5-Minute Morning Reset</title>
+    <title>e·motion — 5-Minute Nervous System Reset</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -70,6 +70,7 @@
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -156,7 +157,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             line-height: 1.1;
             margin-bottom: 1.5rem;
             color: var(--charcoal);
@@ -169,7 +170,7 @@
 
         .hero-description {
             font-size: 1.1rem;
-            max-width: 500px;
+            max-width: 550px;
             margin: 0 auto 3rem;
             color: var(--charcoal);
             opacity: 0.8;
@@ -180,6 +181,13 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+        }
+
+        .cta-subtext {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--terracotta);
+            font-weight: 400;
         }
 
         .btn {
@@ -244,6 +252,30 @@
             width: 1px;
             height: 40px;
             background: linear-gradient(to bottom, var(--charcoal), transparent);
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 8rem 4rem;
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .problem-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .problem h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .problem p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.8;
         }
 
         /* Features Section */
@@ -431,18 +463,18 @@
             opacity: 0.5;
         }
 
-        /* Testimonials */
-        .testimonials {
+        /* Built For Section (replaces testimonials) */
+        .built-for {
             padding: 8rem 4rem;
             background: var(--charcoal);
             color: var(--cream);
         }
 
-        .testimonials .section-header h2 {
+        .built-for .section-header h2 {
             color: var(--cream);
         }
 
-        .testimonials-grid {
+        .built-for-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 3rem;
@@ -450,24 +482,17 @@
             margin: 0 auto;
         }
 
-        .testimonial {
+        .built-for-item {
             padding: 2.5rem;
             border-left: 2px solid var(--terracotta);
         }
 
-        .testimonial-text {
+        .built-for-item p {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
             font-style: italic;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
             opacity: 0.9;
-        }
-
-        .testimonial-author {
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-            opacity: 0.6;
         }
 
         /* Pricing */
@@ -532,7 +557,7 @@
             border-radius: 50%;
         }
 
-        /* Newsletter */
+        /* Newsletter / Final CTA */
         .newsletter {
             padding: 6rem 4rem;
             background: linear-gradient(135deg, var(--sage) 0%, #8a9b8a 100%);
@@ -548,7 +573,7 @@
             color: var(--cream);
             opacity: 0.8;
             margin-bottom: 2rem;
-            max-width: 400px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -632,6 +657,10 @@
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .built-for-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -647,10 +676,11 @@
                 padding: 6rem 1.5rem 4rem;
             }
 
+            .problem,
             .features,
             .how-it-works,
             .cards-preview,
-            .testimonials,
+            .built-for,
             .pricing {
                 padding: 5rem 1.5rem;
             }
@@ -686,7 +716,7 @@
                 transform: none;
             }
 
-            .testimonials-grid {
+            .built-for-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -725,13 +755,14 @@
 
     <section class="hero">
         <div class="hero-content">
-            <p class="tagline">5-Minute Morning Reset</p>
-            <h1>Start each day with <em>intention</em></h1>
-            <p class="hero-description">A minimalist journal paired with digital movement cards. Ground yourself in 5 minutes, before the world rushes in.</p>
+            <p class="tagline">5-Minute Nervous System Reset</p>
+            <h1>Feel grounded before 8am.</h1>
+            <p class="hero-description">5 minutes. 1 journal. 20 reset cards. A morning practice you'll actually stick with.</p>
             <div class="cta-group">
                 <a href="#newsletter" class="btn btn-primary">Join the Waitlist</a>
                 <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
             </div>
+            <p class="cta-subtext">Get 20% off at launch</p>
             <div class="hero-image">
                 <img src="images/hero.jpg" alt="e·motion journal and movement cards">
             </div>
@@ -742,28 +773,35 @@
         </div>
     </section>
 
+    <section class="problem">
+        <div class="problem-content fade-in">
+            <h2>You know what to do. You just can't stay consistent.</h2>
+            <p>You've read about nervous system regulation. You know about breathwork, vagus nerve activation, grounding. You've saved the posts, watched the videos, tried the techniques. But knowing isn't the problem. The problem is nothing sticks. Some days you remember. Most days you don't. And you start your morning in fight-or-flight—again.</p>
+        </div>
+    </section>
+
     <section class="features" id="features">
         <div class="section-header fade-in">
-            <h2>Designed for stillness</h2>
-            <p>Everything you need, nothing you don't. Built for the moments before your day begins.</p>
+            <h2>Everything you need. Nothing you don't.</h2>
+            <p>Built for the moments before your day begins.</p>
         </div>
         <div class="features-grid">
             <div class="feature-card fade-in">
                 <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 6.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Z"/>
-                    <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                 </svg>
-                <h3>Morning Pages</h3>
-                <p>Three simple prompts to clear your mind and set your intention. No overwhelming blank pages—just gentle guidance.</p>
+                <h3>The Journal</h3>
+                <p>90 days of guided prompts. No blank pages. No overwhelm. Just open and start.</p>
             </div>
             <div class="feature-card fade-in">
                 <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                    <path d="M8 7h8m-8 4h6"/>
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <rect x="5" y="7" width="14" height="10" rx="1"/>
+                    <path d="M9 21h6"/>
                 </svg>
-                <h3>Digital Cards</h3>
-                <p>30+ movement cards delivered to your phone. Stretch, breathe, and move with beautiful guided sequences.</p>
+                <h3>The Reset Cards</h3>
+                <p>20 nervous system resets. Scan the QR. Draw a card. Move for 2 minutes.</p>
             </div>
             <div class="feature-card fade-in">
                 <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -771,36 +809,43 @@
                     <polyline points="12 6 12 12 16 14"/>
                 </svg>
                 <h3>5 Minutes</h3>
-                <p>Intentionally brief. Long enough to shift your state, short enough to actually do every single day.</p>
+                <p>Short enough to actually do. Long enough to actually feel it.</p>
             </div>
         </div>
     </section>
 
     <section class="how-it-works" id="how-it-works">
         <div class="section-header fade-in">
-            <h2>Your morning ritual</h2>
-            <p>A gentle sequence to start your day grounded</p>
+            <h2>Your morning reset</h2>
+            <p>Simple enough to do every day</p>
         </div>
         <div class="steps-container">
             <div class="step fade-in">
                 <span class="step-number">01</span>
                 <div class="step-content">
-                    <h3>Wake & Draw</h3>
-                    <p>Before checking your phone, draw a movement card. Each card offers a 2-minute gentle sequence to wake up your body.</p>
+                    <h3>Open</h3>
+                    <p>Open your journal. Today's prompts are waiting.</p>
                 </div>
             </div>
             <div class="step fade-in">
                 <span class="step-number">02</span>
                 <div class="step-content">
-                    <h3>Move & Breathe</h3>
-                    <p>Follow the illustrated movements on your card. No equipment needed. Just you, your breath, and a few square feet of space.</p>
+                    <h3>Draw</h3>
+                    <p>Scan the QR code. Draw a reset card.</p>
                 </div>
             </div>
             <div class="step fade-in">
                 <span class="step-number">03</span>
                 <div class="step-content">
-                    <h3>Write & Release</h3>
-                    <p>Open your journal to today's prompts. Three questions. Three minutes. Let whatever's on your mind flow onto the page.</p>
+                    <h3>Move</h3>
+                    <p>2 minutes. Shake, breathe, tap, stretch. Let your body release.</p>
+                </div>
+            </div>
+            <div class="step fade-in">
+                <span class="step-number">04</span>
+                <div class="step-content">
+                    <h3>Write</h3>
+                    <p>Finish in your journal. Set your intention. Done before 8am.</p>
                 </div>
             </div>
         </div>
@@ -808,37 +853,18 @@
 
     <section class="cards-preview">
         <div class="section-header fade-in">
-            <h2>Movement cards</h2>
-            <p>Beautifully illustrated sequences for every mood and energy level</p>
+            <h2>20 reset cards</h2>
+            <p>Nervous system resets for every mood and energy level</p>
         </div>
         <div class="cards-showcase fade-in">
             <div class="movement-card">
                 <div class="card-icon sage">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M8 12l2 2 4-4"/>
                     </svg>
                 </div>
-                <span class="card-title">Morning Wake</span>
-                <span class="card-duration">2 min</span>
-            </div>
-            <div class="movement-card">
-                <div class="card-icon terracotta">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-                        <path d="M12 6v6l4 2"/>
-                    </svg>
-                </div>
-                <span class="card-title">Gentle Flow</span>
-                <span class="card-duration">3 min</span>
-            </div>
-            <div class="movement-card">
-                <div class="card-icon sage">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                    </svg>
-                </div>
-                <span class="card-title">Energy Boost</span>
+                <span class="card-title">Body Shaking</span>
                 <span class="card-duration">2 min</span>
             </div>
             <div class="movement-card">
@@ -847,32 +873,47 @@
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
                 </div>
-                <span class="card-title">Heart Open</span>
+                <span class="card-title">Butterfly Tapping</span>
+                <span class="card-duration">2 min</span>
+            </div>
+            <div class="movement-card">
+                <div class="card-icon sage">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <path d="M3 9h18M9 21V9"/>
+                    </svg>
+                </div>
+                <span class="card-title">Box Breathing</span>
+                <span class="card-duration">2 min</span>
+            </div>
+            <div class="movement-card">
+                <div class="card-icon terracotta">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <span class="card-title">Grounding</span>
                 <span class="card-duration">2 min</span>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
+    <section class="built-for">
         <div class="section-header fade-in">
-            <h2>Early voices</h2>
+            <h2>Built for women who...</h2>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial fade-in">
-                <p class="testimonial-text">"This replaced my doomscrolling. Five minutes of movement and writing, and I actually feel ready for the day."</p>
-                <p class="testimonial-author">— Maya, Designer</p>
+        <div class="built-for-grid">
+            <div class="built-for-item fade-in">
+                <p>...wake up already wired</p>
             </div>
-            <div class="testimonial fade-in">
-                <p class="testimonial-text">"The cards are gorgeous. I find myself actually looking forward to waking up now."</p>
-                <p class="testimonial-author">— James, Founder</p>
+            <div class="built-for-item fade-in">
+                <p>...know the techniques but can't stay consistent</p>
             </div>
-            <div class="testimonial fade-in">
-                <p class="testimonial-text">"I've tried every meditation app. This is different—it's physical, it's tactile, and it actually sticks."</p>
-                <p class="testimonial-author">— Sofia, Writer</p>
+            <div class="built-for-item fade-in">
+                <p>...want a simple structure, not another app to forget</p>
             </div>
-            <div class="testimonial fade-in">
-                <p class="testimonial-text">"The simplicity is the point. No streaks, no stats. Just presence."</p>
-                <p class="testimonial-author">— Alex, Engineer</p>
+            <div class="built-for-item fade-in">
+                <p>...have 5 minutes, not 50</p>
             </div>
         </div>
     </section>
@@ -880,7 +921,7 @@
     <section class="pricing" id="pricing">
         <div class="section-header fade-in">
             <h2>Simple, intentional</h2>
-            <p>One journal. Lifetime access to digital cards. Nothing recurring.</p>
+            <p>One journal. 20 digital reset cards. Nothing recurring.</p>
         </div>
         <div class="price-card fade-in">
             <div class="price">
@@ -889,11 +930,9 @@
             </div>
             <p class="price-description">Free shipping worldwide</p>
             <ul class="price-features">
-                <li>90-day guided journal with premium paper</li>
-                <li>30+ digital movement cards (lifetime access)</li>
-                <li>Seasonal card pack updates</li>
-                <li>Audio guidance for each movement</li>
-                <li>Private community access</li>
+                <li>90-day guided journal</li>
+                <li>20 digital reset cards (lifetime access)</li>
+                <li>Instant QR code access from your phone</li>
             </ul>
             <a href="#newsletter" class="btn btn-primary" style="width: 100%;">Join the Waitlist</a>
         </div>
@@ -901,8 +940,8 @@
 
     <section class="newsletter" id="newsletter">
         <div class="section-header">
-            <h2>Be the first to know</h2>
-            <p>Join the waitlist for early access and a founding member discount.</p>
+            <h2>Feel grounded before 8am.</h2>
+            <p>Join the waitlist for early access and 20% off at launch.</p>
         </div>
         <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for joining! We\'ll be in touch soon.');">
             <input type="email" placeholder="Your email address" required>
