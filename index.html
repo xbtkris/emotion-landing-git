@@ -208,6 +208,78 @@
             flex-wrap: wrap;
         }
 
+        /* Hero Email Form */
+        .hero-form {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .hero-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: 1px solid rgba(74, 74, 74, 0.2);
+            background: white;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .hero-form input[type="email"]:focus {
+            border-color: var(--sage);
+        }
+
+        .hero-form input[type="email"]::placeholder {
+            color: rgba(74, 74, 74, 0.5);
+        }
+
+        .hero-form button {
+            padding: 1rem 2rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--charcoal);
+            color: var(--cream);
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .hero-form button:hover {
+            background: var(--sage);
+        }
+
+        .hero-form-subtext {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            opacity: 0.6;
+        }
+
+        @media (max-width: 600px) {
+            .hero-form {
+                flex-direction: column;
+            }
+
+            .hero-form input[type="email"] {
+                min-width: 100%;
+            }
+
+            .hero-form button {
+                width: 100%;
+            }
+        }
+
         .cta-subtext {
             margin-top: 1.5rem;
             font-size: 0.9rem;
@@ -810,11 +882,11 @@
             <p class="tagline">5-Minute Nervous System Reset</p>
             <h1>Feel grounded before 8am.</h1>
             <p class="hero-description">5 minutes. 1 journal. 20 reset cards. A morning practice you'll actually stick with.</p>
-            <div class="cta-group">
-                <a href="#newsletter" class="btn btn-primary">Join the Waitlist</a>
-                <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
-            </div>
-            <p class="cta-subtext">Get 20% off at launch</p>
+            <form class="hero-form" id="hero-waitlist-form">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Get 20% Off →</button>
+                <p class="hero-form-subtext">Join the waitlist. No spam, unsubscribe anytime.</p>
+            </form>
             <div class="hero-image">
                 <img src="images/hero.jpg" alt="e·motion journal and movement cards">
             </div>
@@ -1083,6 +1155,43 @@
             .catch(function() {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Join Waitlist';
+                alert('Something went wrong. Please try again.');
+            });
+        });
+
+        // Hero form submission
+        document.getElementById('hero-waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var form = this;
+            var email = form.querySelector('input[name="email"]').value;
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var originalText = submitBtn.textContent;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+
+            fetch('https://formspree.io/f/maqjarep', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ email: email })
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    // Fire Meta Pixel Lead event
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead');
+                    }
+                    window.location.href = 'thankyou.html';
+                } else {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                    alert('Something went wrong. Please try again.');
+                }
+            })
+            .catch(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
                 alert('Something went wrong. Please try again.');
             });
         });
