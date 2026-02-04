@@ -996,9 +996,8 @@
             <h2>Feel grounded before 8am.</h2>
             <p>Join the waitlist for early access and 20% off at launch.</p>
         </div>
-        <form class="newsletter-form" action="https://formspree.io/f/maqjarep" method="POST">
+        <form class="newsletter-form" id="waitlist-form">
             <input type="email" name="email" placeholder="Your email address" required>
-            <input type="hidden" name="_next" value="https://tryemotion.com/thankyou.html">
             <button type="submit" class="btn">Join Waitlist</button>
         </form>
     </section>
@@ -1045,6 +1044,38 @@
                         block: 'start'
                     });
                 }
+            });
+        });
+
+        // Waitlist form submission
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var form = this;
+            var email = form.querySelector('input[name="email"]').value;
+            var submitBtn = form.querySelector('button[type="submit"]');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+
+            fetch('https://formspree.io/f/maqjarep', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ email: email })
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    window.location.href = 'thankyou.html';
+                } else {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Join Waitlist';
+                    alert('Something went wrong. Please try again.');
+                }
+            })
+            .catch(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Join Waitlist';
+                alert('Something went wrong. Please try again.');
             });
         });
     </script>
